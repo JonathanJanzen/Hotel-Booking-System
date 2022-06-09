@@ -20,6 +20,8 @@ import org.w3c.dom.NodeList;
  */
 public class Main {
 	
+	private static Rooms hotelRooms;
+	
 	/**
 	 * Main method to be used via command line to execute the functionality requested.
 	 * @param args Any command line arguments. None are required to execute the program
@@ -27,6 +29,11 @@ public class Main {
 	 * @throws ParserConfigurationException 
 	 */
 	public static void main(String[] args) {
+		
+		horizontalLine();
+		System.out.println("Welcome to the console edition of our Hotel Room Booking program. "
+				+ "Please wait while we restore any previous data before proceeding...");
+		
 		String HotelDocFileName = null, BookingDocFileName = null;
 		//Read from config file to determine file name to read for Rooms.
 		try {
@@ -51,7 +58,18 @@ public class Main {
 		
 		//Create Rooms object using the two filenames specified in the config.xml file.
 		//All parsing of these files occurs within the constructor for the "Rooms" object.
-		Rooms hotelRooms = new Rooms(HotelDocFileName, BookingDocFileName);
+		hotelRooms = new Rooms(HotelDocFileName, BookingDocFileName);
+		
+		System.out.println("Data has been added successfully. Please type '1' to check availability on a given date, or "
+				+ "type '2' to book a room of a given type for a specific date range.");
+	}
+	
+	/**
+	 * Prints a horizontal line for console output beautification.
+	 */
+	private static void horizontalLine() {
+		System.out.println("-----------------------------------------------------------------------"
+				+ "-------------------------------------------------------------------");
 	}
 
 }
