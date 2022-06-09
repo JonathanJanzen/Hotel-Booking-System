@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Config>>
+	<HotelRoomsFileName>src/HotelBookingSystem/data/Hotel-Rooms.txt</HotelRoomsFileName>
+	<RoomBookingsFileName>src/HotelBookingSystem/data/Hotel-Room-Bookings.txt</RoomBookingsFileName>
+</Config>
