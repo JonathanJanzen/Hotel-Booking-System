@@ -64,6 +64,7 @@ public class Room {
 	 */
 	public boolean createBooking(LocalDate date, String name, String contactNumber) {
 		//No need to check availability of the date here, as availabilty has already been checked at the Rooms level
+		//TODO
 		return true;
 	}
 	
@@ -74,6 +75,14 @@ public class Room {
 	 * @return
 	 */
 	public boolean checkAvailability(LocalDate date) {
+		//TODO
 		return true;
+	}
+	
+	/**
+	 * Function to print all Room information as a string.
+	 */
+	public void printAsString() {
+		//TODO
 	}
 }

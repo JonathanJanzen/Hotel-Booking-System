@@ -1,6 +1,7 @@
 package HotelBookingSystem;
 
 import java.io.File;
+import java.time.LocalDate;
 
 import javax.swing.text.Document;
 import javax.swing.text.html.parser.Element;
@@ -62,6 +63,7 @@ public class Main {
 		
 		System.out.println("Data has been added successfully. Please type '1' to check availability on a given date, or "
 				+ "type '2' to book a room of a given type for a specific date range.");
+		
 	}
 	
 	/**
@@ -71,5 +73,39 @@ public class Main {
 		System.out.println("-----------------------------------------------------------------------"
 				+ "-------------------------------------------------------------------");
 	}
-
+	
+	/**
+	 * Function to check the availability of a particular RoomType.
+	 * @param type RoomType desired.
+	 * @param date Date to check for availability of the particular RoomType.
+	 * @return Returns true if a room is available on that date of that type, and false otherwise.
+	 */
+	private boolean checkRoomAvailability(RoomType type, LocalDate date) {
+		return hotelRooms.checkRoomAvailability(type, date) == null ? false : true;
+	}
+	
+	/**
+	 * Function to create a booking for a single day.
+	 * @param type RoomType that is to be booked for.
+	 * @param date Single date that the booking is for.
+	 * @param name Name of the individual who has booked the room.
+	 * @param contactNumber Contact number of the individual who has booked the room.
+	 * @return Returns true if the room was booked successfully, and false otherwise.
+	 */
+	private boolean createBooking(RoomType type, LocalDate date, String name, String contactNumber) {
+		return hotelRooms.createBooking(type, date, name, contactNumber);
+	}
+	
+	/**
+	 * Function to create a booking for multiple days.
+	 * @param type RoomType that is to be booked for.
+	 * @param startDate Start date that the booking is for.
+	 * @param endDate End date that the booking is for.
+	 * @param name Name of the individual who has booked the room.
+	 * @param contactNumber Contact number of the individual who has booked the room.
+	 * @return Returns true if the room was booked successfully, and false otherwise.
+	 */
+	private boolean createBooking(RoomType type, LocalDate startDate, LocalDate endDate, String name, String contactNumber) {
+		return hotelRooms.createBooking(type, startDate, endDate, name, contactNumber);
+	}
 }

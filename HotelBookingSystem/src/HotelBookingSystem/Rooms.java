@@ -66,10 +66,21 @@ public class Rooms {
 	}
 	
 	/**
+	 * Function to check the availability of a room on a given date.
+	 * @param type RoomType to be checked.
+	 * @param date Date upon which the room needs to be checked for.
+	 * @return null if no room is found, else return the Room object.
+	 */
+	public Room checkRoomAvailability(RoomType type, LocalDate date) {
+		//TODO: return null if no room is found, else return the room that is available
+		return null;
+	}
+	
+	/**
 	 * Function to save all data to the bookingDocFile. Called after any booking is created.
 	 */
 	private void saveData() {
-		
+		//TODO
 	}
 	
 	/**
@@ -105,7 +116,7 @@ public class Rooms {
 	 * If a bookings document does not exist, create one and exit. If it does and is empty, simply exit.
 	 */
 	private void populateBookings() {
-		
+		//TODO
 	}
 
 }
