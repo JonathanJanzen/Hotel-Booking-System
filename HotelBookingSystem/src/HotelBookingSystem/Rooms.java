@@ -58,6 +58,8 @@ public class Rooms {
 	 * @return A boolean outlining whether booking was successful or not.
 	 */
 	public boolean createBooking(RoomType type, LocalDate startDate, LocalDate endDate, String name, String contactNumber) {
+		//TODO: must check that ALL dates are free for a given room before calling "createBooking()" in the given Room object
+		
 		//After successful booking creation, save data to local files
 		saveData();
 		return true;
@@ -95,12 +97,6 @@ public class Rooms {
 		} catch (FileNotFoundException e) {
 			System.out.println("The file name specified in the config.xml file was not found."
 					+ " Please ensure that the file name is accurate and try again.");
-		}
-		
-		for (int i = 0; i < roomsList.size(); i++) {
-			for (int j = 0; j < roomsList.get(i).size(); j++) {
-				System.out.println("Room number:" + roomsList.get(i).get(j).getNumber() + " Room Type: " + roomsList.get(i).get(j).getType());
-			}
 		}
 	}
 	

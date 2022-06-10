@@ -7,7 +7,7 @@ import java.time.LocalDate;
  * @author Jonathan Janzen
  *
  */
-public class Booking {
+public class Booking implements Comparable<Booking>{
 	private LocalDate date;
 	private String name;
 	private String contactNumber;
@@ -46,5 +46,16 @@ public class Booking {
 	 */
 	public String getContactNumber() {
 		return this.contactNumber;
+	}
+	
+	/**
+	 * Function to implement the Comparable interface to the Booking data type.
+	 * @param that A Booking object to be compared to the local object.
+	 * @return Returns an integer 1 if the object's code is greater than that, -1 if it is less and 0 if they
+	 * are the same.
+	 */
+	@Override
+	public int compareTo(Booking that) {
+		return (this.date).compareTo(that.getDate());
 	}
 }
