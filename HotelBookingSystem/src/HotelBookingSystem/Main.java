@@ -1,16 +1,7 @@
 package HotelBookingSystem;
 
-import java.io.File;
 import java.time.LocalDate;
-
-import javax.swing.text.Document;
-import javax.swing.text.html.parser.Element;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import java.util.Scanner;
 
 /**
  * Main class to implement the two use cases requested:
@@ -21,7 +12,7 @@ import org.w3c.dom.NodeList;
  */
 public class Main {
 	
-	private static Bookings hotelBookings;
+	private static Bookings hotelBookings = new Bookings();
 	
 	/**
 	 * Main method to be used via command line to execute the functionality requested.
@@ -33,12 +24,27 @@ public class Main {
 		
 		horizontalLine();
 		System.out.println("Welcome to the console edition of our Hotel Room Booking program.");
+		System.out.println("The program will now request the number of rooms of each type that are present. Please "
+				+ "enter the correct number in the console window when asked.");
 		
+		Scanner input = new Scanner(System.in);
+		//Iterate through all RoomTypes and take input for the number of each at the hotel
+		for (int i = 0; i < RoomType.values().length; i++) {
+			RoomType type = RoomType.values()[i];
+			while (hotelBookings.getNumRoomsByType(type) == -1) {
+				System.out.println("Please enter the number of rooms of type " + RoomType.values()[i] + ":");
+				try {
+					int num = Integer.parseInt(input.nextLine());
+					hotelBookings.setNumRooms(type, num);
+				} catch (NumberFormatException ex) {
+					System.out.println("That was an incorrect input. Please try again.");
+				}
+			}
+		}	
 		horizontalLine();
 		
 		System.out.println("Data has been added successfully. Please type '1' to check availability on a given date, or "
 				+ "type '2' to book a room of a given type for a specific date range.");
-		
 	}
 	
 	/**

@@ -37,18 +37,37 @@ public class Bookings {
 		this.bookingsList = new ArrayList<RedBlackBST>();
 		this.numRoomsByType = new ArrayList<Integer>();
 		for (int i = 0; i < RoomType.values().length; i++) {
-			numRoomsByType.add(null);
+			numRoomsByType.add(-1);
 		}
+	}
+	
+	/**
+	 * Function to get the number of rooms of a particular type.
+	 * @param type RoomType desired.
+	 * @return The number of rooms of the desired type that are potentially available.
+	 */
+	public int getNumRoomsByType(RoomType type) {
+		return numRoomsByType.get(type.getValue());
+	}
+	
+	/**
+	 * Sets the number of rooms for a given RoomType.
+	 * @param type The RoomType to be changed.
+	 * @param n The number of rooms of that type.
+	 */
+	public void setNumRooms(RoomType type, int n) {
+		numRoomsByType.set(type.getValue(), n);
 	}
 	
 	/**
 	 * Creates a booking for the given single day, then ensures that the list of bookings is in order
 	 * by date.
 	 * @param type RoomType that the booking is to be created for.
-	 * @param date LocalDate object, representing the date for the booking to occur.
+	 * @param startDate LocalDate object, representing the date for the booking to begin.
+	 * @param endDate LocalDate object, representing the date for the booking to end.
 	 * @return Boolean of 'true' if the booking has been created successfully, and false if not.
 	 */
-	public boolean createBooking(RoomType type, LocalDate date) {
+	public boolean createBooking(RoomType type, LocalDate startDate, LocalDate endDate) {
 		//TODO
 		return true;
 	}
