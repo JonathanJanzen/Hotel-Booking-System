@@ -120,9 +120,10 @@ public class Bookings {
 	}
 	
 	/**
-	 * Function to determine the size of the bookings list for a given RoomType.
+	 * Function to determine the size of the bookings list for a given RoomType. Gives the number of days that have
+	 * any bookings.
 	 * @param type RoomType to check the number of bookings for.
-	 * @return Integer with the number of bookings for the given type.
+	 * @return Integer with the number of days booked for the given type.
 	 */
 	public int getNumBookings(RoomType type) {
 		return bookingsList.get(type.getValue()).size();
