@@ -116,15 +116,6 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	}
 	
 	/**
-	 * Determines if the BST contains the given key.
-	 * @param key The key to be found.
-	 * @return True if the key is found, false otherwise.
-	 */
-	public boolean contains(Key key) {
-		return get(key) != null;
-	}
-	
-	/**
 	 * Insert the key-value pair specified into the BST, overwriting the previous
 	 * value if it already exists.
 	 * @param key Key to be added.
@@ -132,10 +123,6 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	 */
 	public void put(Key key, Value val) {
 		if (key == null) throw new IllegalArgumentException("First argument to put() is null.");
-//		if (val == null) {
-//			delete(key);
-//			return;
-//		}
 		
 		root = put(root, key, val);
 		root.colour = BLACK;
