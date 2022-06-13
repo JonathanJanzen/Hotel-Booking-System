@@ -77,6 +77,9 @@ public class Bookings {
 	public boolean createBooking(RoomType type, LocalDate startDate, LocalDate endDate) {
 		ArrayList<Integer> existingBookings = new ArrayList<Integer>();
 		//First: check availability over the entire set of dates
+		if (startDate.isEqual(endDate)) return false;
+		else if (startDate.isAfter(endDate)) return false;
+		
 		for (LocalDate date = startDate; date.isBefore(endDate); date = date.plusDays(1)) {
 			Integer checkVal = checkAvailability(type, date);
 			//Shortcut exit if any room is unavailable in the series
