@@ -60,6 +60,9 @@ public class Bookings {
 	 * @param n The number of rooms of that type.
 	 */
 	public void setNumRooms(RoomType type, int n) {
+		if (n < 0) {
+			throw new NumberFormatException();
+		}
 		numRoomsByType.set(type.getValue(), n);
 	}
 	

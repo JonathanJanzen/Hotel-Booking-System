@@ -37,9 +37,10 @@ public class Main {
 					int num = Integer.parseInt(input.nextLine());
 					hotelBookings.setNumRooms(type, num);
 				} catch (NumberFormatException ex) {
-					System.out.println("That was an incorrect input. Please try again.");
+					System.out.println("That was an incorrect input. Must be an integer that is 0 or greater. Please try again.\n");
 				}
 			}
+			System.out.println("");
 		}
 		System.out.println("Data has been added successfully.");
 		
@@ -57,7 +58,6 @@ public class Main {
 					System.out.println("ERROR: Input must be an integer.");
 				}
 			}
-			System.out.println("Selection successful.");
 			
 			if (checkVal == 1) {
 				//Availability check for a specific room type on a given date
