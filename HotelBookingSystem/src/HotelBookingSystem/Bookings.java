@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * BST (in general) boasts 2lg(n) search and 2lg(n) insertion complexity in worst-case circumstances. In this
  * particular case, given that an availability check requires k (where k is the number of days the stay
  * is booked for) search operations, this becomes 2*k*lg(n) for searching and inserting into the relevant
- * BST (as insertion also requires a check for capacity).
+ * BST (as insertion also requires a check for capacity). Therefore, both can be considered O(lg n) in complexity.
  * 
  * ASSUMPTION: Rooms are booked based on nights. So, for example, a booking from 2022-03-02 to 2022-03-04 would be two
  * nights, the 2nd and 3rd, meaning that a booking would not be created for the 4th.
