@@ -1,11 +1,9 @@
 package HotelBookingSystem;
 
 /**
- * The following logic has been modified from the code
- * found in Sedgewick & Wayne's 4th Edition "Algorithms"
- * textbook. A link to the textbook's version of the
- * algorithm can be found here:
- * https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/RedBlackBST.java.html
+ * The following data structure and algorithms have been modified from the code
+ * found in Sedgewick & Wayne's 4th Edition "Algorithms" textbook. A link to the textbook's 
+ * version can be found here: https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/RedBlackBST.java.html
  * @author Robert Sedgewick
  * @author Kevin Wayne
  * @author Jonathan Janzen
