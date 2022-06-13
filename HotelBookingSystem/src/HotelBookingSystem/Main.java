@@ -97,6 +97,7 @@ public class Main {
 					else endDateValid = true;
 				}
 				
+				//Attempt a booking and return a message to the user depending on the result
 				boolean bookingSuccess = createBooking(checkType, startDate, endDate);
 				if (bookingSuccess) {
 					System.out.println("Booking was successfully made from " + startDate.toString() + " to " + endDate.toString() + " in room type " + checkType);
@@ -104,12 +105,12 @@ public class Main {
 					System.out.println("Booking was unsucessful due to limited availability. Please try another set of dates or a different."
 							+ " room type.");
 				}
-			}
-			
-			//DEBUG: printing the number of bookings in each tree
-			horizontalLine();
-			for (int i = 0; i < RoomType.values().length; i++) {
-				System.out.println("#bookings for " + RoomType.values()[i] + ": " + hotelBookings.getNumBookings(RoomType.values()[i]));
+				
+				//Print the number of bookings of each type
+				horizontalLine();
+				for (int i = 0; i < RoomType.values().length; i++) {
+					System.out.println("#bookings for " + RoomType.values()[i] + ": " + hotelBookings.getNumBookings(RoomType.values()[i]));
+				}
 			}
 		}
 	}
@@ -170,6 +171,8 @@ public class Main {
 	/**
 	 * Function to parse a RoomType (by numerical ID) from the command line.
 	 * @param s Scanner to be used to get input.
+	 * @param message String message to be printed, depending on the context in which the request for a RoomType
+	 * is made.
 	 * @return RoomType object that corresponds to the numerical ID given via command line.
 	 */
 	private static RoomType getRoomTypeFromInput(Scanner s, String message) {

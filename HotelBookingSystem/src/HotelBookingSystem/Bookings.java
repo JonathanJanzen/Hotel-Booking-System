@@ -76,6 +76,7 @@ public class Bookings {
 		//First: check availability over the entire set of dates
 		for (LocalDate date = startDate; date.isBefore(endDate); date = date.plusDays(1)) {
 			Integer checkVal = checkAvailability(type, date);
+			//Shortcut exit if any room is unavailable in the series
 			if (checkVal == 0) return false;
 			//add to existing bookings list to prevent additional searching later
 			existingBookings.add(checkVal);
@@ -84,6 +85,7 @@ public class Bookings {
 		//Next: add or update booking for each day in the series
 		int i = 0;
 		for (LocalDate date = startDate; date.isBefore(endDate); date = date.plusDays(1)) {
+			//Index bookingsList for the correct BST, then put the new booking information in
 			bookingsList.get(type.getValue()).put(date, existingBookings.get(i) - 1);
 			i++;
 		}
@@ -99,7 +101,8 @@ public class Bookings {
 	public Integer checkAvailability(RoomType type, LocalDate date) {
 		Integer checkVal = (Integer) bookingsList.get(type.getValue()).get(date);
 		if (checkVal == null) {
-			//Must determine if there are enough rooms of that type to handle a booking
+			//Must determine if there are enough rooms of that type to handle a booking in the event that the
+			//node does not currently exist
 			if (numRoomsByType.get(type.getValue()) - 1 >= 0) {
 				return numRoomsByType.get(type.getValue());
 			} else {
