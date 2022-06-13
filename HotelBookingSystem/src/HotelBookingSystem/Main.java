@@ -18,7 +18,6 @@ public class Main {
 	 * Main method to be used via command line to execute the functionality requested.
 	 * @param args Any command line arguments. None are required to execute the program
 	 * correctly.
-	 * @throws ParserConfigurationException 
 	 */
 	public static void main(String[] args) {
 		

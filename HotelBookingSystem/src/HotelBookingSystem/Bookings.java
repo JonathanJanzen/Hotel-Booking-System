@@ -109,7 +109,7 @@ public class Bookings {
 		if (checkVal == null) {
 			//Must determine if there are enough rooms of that type to handle a booking in the event that the
 			//node does not currently exist
-			if (numRoomsByType.get(type.getValue()) - 1 >= 0) {
+			if (numRoomsByType.get(type.getValue()) > 0) {
 				return numRoomsByType.get(type.getValue());
 			} else {
 				return 0;
