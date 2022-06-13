@@ -37,6 +37,7 @@ public class Bookings {
 		this.bookingsList = new ArrayList<RedBlackBST>();
 		this.numRoomsByType = new ArrayList<Integer>();
 		for (int i = 0; i < RoomType.values().length; i++) {
+			bookingsList.add(new RedBlackBST());
 			numRoomsByType.add(-1);
 		}
 	}
@@ -104,12 +105,5 @@ public class Bookings {
 		} else {
 			return checkVal;
 		}
-	}
-	
-	/**
-	 * Function to validate that Bookings are being processed properly using the console.
-	 */
-	public void printAsString(RoomType type) {
-		//TODO
 	}
 }

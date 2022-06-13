@@ -40,11 +40,65 @@ public class Main {
 					System.out.println("That was an incorrect input. Please try again.");
 				}
 			}
-		}	
-		horizontalLine();
+		}
+		System.out.println("Data has been added successfully.");
 		
-		System.out.println("Data has been added successfully. Please type '1' to check availability on a given date, or "
-				+ "type '2' to book a room of a given type for a specific date range.");
+		while(true) {
+			horizontalLine();
+			int checkVal = 0;
+			while (checkVal != 1 && checkVal != 2) {
+				System.out.println("Please type '1' to check availability on a given date, or type '2' to add a "
+						+ "booking over a certain range.");
+				try {
+					checkVal = Integer.parseInt(input.nextLine());
+					if (checkVal != 1 && checkVal != 2) System.out.println("ERROR: Input must be '1' or '2'.");
+				} catch (NumberFormatException ex) {
+					System.out.println("ERROR: Input must be an integer.");
+				}
+			}
+			System.out.println("Selection successful.");
+			
+			//Selection successful
+			if (checkVal == 1) {
+				//Availability check for a specific room type on a given date
+				//Get a date to check for availability from the console
+				LocalDate checkDate = null;
+				while (checkDate == null) {
+					horizontalLine();
+					System.out.println("Please enter the date to be checked for availability as a string in the"
+							+ " form yyyy-mm-dd. For example, 2020-01-08:");
+					checkDate = dateFromInput(input);
+				}
+				
+				RoomType checkType = null;
+				while (checkType == null) {
+					horizontalLine();
+					System.out.println("Please enter the RoomType that you wish to check the availability of. Your options"
+							+ " and their corresponding numerical values are listed below:");
+					for (int i = 0; i < RoomType.values().length; i++) {
+						System.out.println(RoomType.values()[i] + ": " + RoomType.values()[i].getValue());
+					}
+					try {
+						checkType = RoomType.values()[Integer.parseInt(input.nextLine())];
+					} catch (Exception ex) {
+						System.out.println("ERROR: Input value must be an integer that corresponds to one of the RoomTypes listed"
+								+ " above.");
+					}
+				}
+				
+				//Check availability
+				horizontalLine();
+				int availabilityCheck = hotelBookings.checkAvailability(checkType, checkDate);
+				if (availabilityCheck == 0) {
+					System.out.println("Sorry, there are no rooms of type " + checkType + " available on " + checkDate.toString());
+				} else {
+					System.out.println("There are " + availabilityCheck + " rooms of type " + checkType + " available on " + checkDate.toString());
+				}
+				
+			} else if (checkVal == 2) {
+				
+			}
+		}
 	}
 	
 	/**
@@ -62,7 +116,7 @@ public class Main {
 	 * @return Returns the number of rooms available of a given type on a given date.
 	 */
 	private int checkRoomAvailability(RoomType type, LocalDate date) {
-		//TODO
+		return hotelBookings.checkAvailability(type, date);
 	}
 	
 	/**
@@ -74,5 +128,22 @@ public class Main {
 	 */
 	private boolean createBooking(RoomType type, LocalDate startDate, LocalDate endDate) {
 		return hotelBookings.createBooking(type, startDate, endDate);
+	}
+	
+	/**
+	 * Function to parse a date from the command line. Returns null if input is
+	 * invalid.
+	 * @param s Scanner to be used to get input.
+	 * @return LocalDate object if the input was valid, null otherwise.
+	 */
+	private static LocalDate dateFromInput(Scanner s) {
+		LocalDate checkDate = null;
+		try {
+			checkDate = LocalDate.parse(s.nextLine());
+			return checkDate;
+		} catch (Exception ex) {
+			System.out.println("An error occured while processing the date requested. Please try again.");
+			return null;
+		}
 	}
 }
