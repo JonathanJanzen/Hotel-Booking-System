@@ -22,6 +22,9 @@ import java.util.ArrayList;
  * particular case, given that an availability check requires k (where k is the number of days the stay
  * is booked for) search operations, this becomes 2*k*lg(n) for searching and inserting into the relevant
  * BST (as insertion also requires a check for capacity).
+ * 
+ * ASSUMPTION: Rooms are booked based on nights. So, for example, a booking from 2022-03-02 to 2022-03-04 would be two
+ * nights, the 2nd and 3rd, meaning that a booking would not be created for the 4th.
  * @author Jonathan Janzen
  *
  */
@@ -105,5 +108,14 @@ public class Bookings {
 		} else {
 			return checkVal;
 		}
+	}
+	
+	/**
+	 * Function to determine the size of the bookings list for a given RoomType.
+	 * @param type RoomType to check the number of bookings for.
+	 * @return Integer with the number of bookings for the given type.
+	 */
+	public int getNumBookings(RoomType type) {
+		return bookingsList.get(type.getValue()).size();
 	}
 }
