@@ -210,5 +210,4 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 		h.left.colour = !h.left.colour;
 		h.right.colour = !h.right.colour;
 	}
-	
 }

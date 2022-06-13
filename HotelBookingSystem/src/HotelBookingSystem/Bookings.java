@@ -68,7 +68,21 @@ public class Bookings {
 	 * @return Boolean of 'true' if the booking has been created successfully, and false if not.
 	 */
 	public boolean createBooking(RoomType type, LocalDate startDate, LocalDate endDate) {
-		//TODO
+		ArrayList<Integer> existingBookings = new ArrayList<Integer>();
+		//First: check availability over the entire set of dates
+		for (LocalDate date = startDate; date.isBefore(endDate); date = date.plusDays(1)) {
+			Integer checkVal = checkAvailability(type, date);
+			if (checkVal == 0) return false;
+			//add to existing bookings list to prevent additional searching later
+			existingBookings.add(checkVal);
+		}
+		
+		//Next: add or update booking for each day in the series
+		int i = 0;
+		for (LocalDate date = startDate; date.isBefore(endDate); date = date.plusDays(1)) {
+			bookingsList.get(type.getValue()).put(date, existingBookings.get(i) - 1);
+			i++;
+		}
 		return true;
 	}
 	
@@ -78,8 +92,18 @@ public class Bookings {
 	 * @param date The date on which to check the availability.
 	 * @return Number of rooms available of the given type.
 	 */
-	public int checkAvailability(RoomType type, LocalDate date) {
-		//TODO
+	public Integer checkAvailability(RoomType type, LocalDate date) {
+		Integer checkVal = (Integer) bookingsList.get(type.getValue()).get(date);
+		if (checkVal == null) {
+			//Must determine if there are enough rooms of that type to handle a booking
+			if (numRoomsByType.get(type.getValue()) - 1 >= 0) {
+				return numRoomsByType.get(type.getValue());
+			} else {
+				return 0;
+			}
+		} else {
+			return checkVal;
+		}
 	}
 	
 	/**
