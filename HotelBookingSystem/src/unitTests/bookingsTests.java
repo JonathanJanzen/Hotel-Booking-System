@@ -1,5 +1,7 @@
 package unitTests;
 
+import static org.junit.Assert.assertThrows;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -36,6 +38,14 @@ class bookingsTests {
 		for (int i = 0; i < RoomType.values().length; i++) {
 			assert testBookings.getNumRoomsByType(RoomType.values()[i]) == testNumRooms.get(i);
 		}
+	}
+	
+	@Test
+	void testSetNumRoomsNegative() {
+		//Test to ensure that an exception is thrown if a negative n is passed to setNumRooms()
+		Exception exception = assertThrows(NumberFormatException.class, () -> {
+			testBookings.setNumRooms(RoomType.TWIN, -1); 
+		});
 	}
 	
 	@Test
