@@ -1,13 +1,16 @@
 package unitTests;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
 import HotelBookingSystem.RedBlackBST;
 
+/**
+ * Test class for general functionality of the RedBlackBST data structure.
+ * @author Jonathan Janzen
+ *
+ */
 class redBlackBSTTests {
 	
 	RedBlackBST testBST = new RedBlackBST();

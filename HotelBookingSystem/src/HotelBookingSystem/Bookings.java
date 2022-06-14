@@ -60,6 +60,7 @@ public class Bookings {
 	 * @param n The number of rooms of that type.
 	 */
 	public void setNumRooms(RoomType type, int n) {
+		//Throw an exception if the number of rooms is less than 0
 		if (n < 0) {
 			throw new NumberFormatException();
 		}
@@ -92,6 +93,7 @@ public class Bookings {
 		int i = 0;
 		for (LocalDate date = startDate; date.isBefore(endDate); date = date.plusDays(1)) {
 			//Index bookingsList for the correct BST, then put the new booking information in
+			//Must also decrement the value of any existing bookings
 			bookingsList.get(type.getValue()).put(date, existingBookings.get(i) - 1);
 			i++;
 		}

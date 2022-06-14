@@ -24,7 +24,7 @@ public class Main {
 		horizontalLine();
 		System.out.println("Welcome to the console edition of our Hotel Room Booking program.");
 		System.out.println("The program will now request the number of rooms of each type that are present. Please "
-				+ "enter the correct number in the console window when asked.");
+				+ "enter the correct number of available rooms for the given type in the console window when asked.");
 		
 		//Iterate through all RoomTypes and take input for the number of each at the hotel
 		Scanner input = new Scanner(System.in);
@@ -100,15 +100,14 @@ public class Main {
 				boolean bookingSuccess = createBooking(checkType, startDate, endDate);
 				if (bookingSuccess) {
 					System.out.println("Booking was successfully made from " + startDate.toString() + " to " + endDate.toString() + " in room type " + checkType);
+					//Print the total number of booked dates for each type
+					horizontalLine();
+					for (int i = 0; i < RoomType.values().length; i++) {
+						System.out.println("#bookings for " + RoomType.values()[i] + ": " + hotelBookings.getNumBookings(RoomType.values()[i]));
+					}
 				} else {
 					System.out.println("Booking was unsucessful due to limited availability. Please try another set of dates or a different."
 							+ " room type.");
-				}
-				
-				//Print the number of bookings of each type
-				horizontalLine();
-				for (int i = 0; i < RoomType.values().length; i++) {
-					System.out.println("#bookings for " + RoomType.values()[i] + ": " + hotelBookings.getNumBookings(RoomType.values()[i]));
 				}
 			}
 		}
