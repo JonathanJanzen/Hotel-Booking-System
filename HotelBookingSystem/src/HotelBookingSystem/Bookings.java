@@ -80,6 +80,7 @@ public class Bookings {
 		//First: check availability over the entire set of dates
 		if (startDate.isEqual(endDate)) return false;
 		else if (startDate.isAfter(endDate)) return false;
+		//else if (startDate.isBefore(LocalDate.now())) return false;
 		
 		for (LocalDate date = startDate; date.isBefore(endDate); date = date.plusDays(1)) {
 			Integer checkVal = checkAvailability(type, date);

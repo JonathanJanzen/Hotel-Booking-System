@@ -1,5 +1,6 @@
 package HotelBookingSystem;
 
+import java.time.Clock;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -20,7 +21,6 @@ public class Main {
 	 * correctly.
 	 */
 	public static void main(String[] args) {
-		
 		horizontalLine();
 		System.out.println("Welcome to the console edition of our Hotel Room Booking program.");
 		System.out.println("The program will now request the number of rooms of each type that are present. Please "
@@ -84,7 +84,13 @@ public class Main {
 				RoomType checkType = getRoomTypeFromInput(input, "book");
 				
 				//Get start date
-				LocalDate startDate = getLocalDateFromInput(input, "start date of the booking");
+				LocalDate startDate = null;
+				boolean startDateValid = false;
+				while (!startDateValid) {
+					startDate = getLocalDateFromInput(input, "start date of the booking");
+					if (startDate.isBefore(LocalDate.now())) System.out.println("ERROR: The start date must not be before today's date.");
+					else startDateValid = true;
+				}
 				
 				//Get end date
 				LocalDate endDate = null;

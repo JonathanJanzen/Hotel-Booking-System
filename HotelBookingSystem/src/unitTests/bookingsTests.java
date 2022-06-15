@@ -97,6 +97,12 @@ class bookingsTests {
 		assert testBookings.createBooking(RoomType.QUEEN, LocalDate.parse("2022-06-13"), LocalDate.parse("2022-06-16"));
 	}
 	
+//	@Test
+//	void testCreateBookingStartDateBeforePresentDate() {
+//		//Test to confirm that a booking is not successfully created if the start date is before today's date
+//		assert !testBookings.createBooking(RoomType.DOUBLE, LocalDate.now().minusDays(2), LocalDate.now().plusDays(5));
+//	}
+//	
 	@Test
 	void testCheckAvailabilityMultipleBookings() {
 		//Same case as above, validating that the expected availability of that room type is there on the given days
